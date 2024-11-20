@@ -52,14 +52,17 @@ double sumarColMajor(int **matrix, long int N, long int M)
     return tiempo;
 }
 
-int main() {
+int main(int argc, char *argv[]) {
 
-    int N, M;
+    //procesa los argumentos pasados al ejecutar
+    if(argc != 3)
+    {
+        printf("Uso: %s <N> <M>\n", argv[0]);
+        return 1;
+    }
     
-    printf("Ingresa el numero de filas (N): ");
-    scanf("%d", &N);
-    printf("Ingresa el numero de columnas (M): ");
-    scanf("%d", &M);
+    int N = atoi(argv[1]);
+    int M = atoi(argv[2]);
 
     // Asignar memoria para la matriz
     
@@ -86,13 +89,28 @@ int main() {
         }
     }
     
-    //double tiempoRowMajor = sumarRowMajor(matrix, N, M);
     double tiempoRowMajor = sumarRowMajor(matrix, N, M);
     printf("Tiempo Row Major: %f\n", tiempoRowMajor);
 
-    //double tiempoColMajor = sumarColMajor(matrix, N, M);
     double tiempoColMajor = sumarColMajor(matrix, N, M);
     printf("Tiempo Col Major: %f\n", tiempoColMajor);
+
+    // Escribir el resultado en un archivo
+    FILE *f = fopen("resultados.txt", "a");
+    if (f == NULL)
+    {
+        printf("Error al abrir el archivo de resultados.\n");
+        return 1;
+    }
+    fprintf(f, "%d %d %f %f\n", N, M, tiempoRowMajor, tiempoColMajor);
+    fclose(f);
+
+    // Liberar la memoria asignada
+    for(int i = 0; i < N; i++)
+    {
+        free(matrix[i]);
+    }
+    free(matrix);
 
     return 0;
     
