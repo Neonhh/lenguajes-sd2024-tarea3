@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <time.h>
 
-#define N 1000
-#define M 1000
+#define N 1000 //Maximos tamaños validos para arreglo en heap o memoria estatica
+#define M 100
 
 int matrix[N][M]; 
 
@@ -56,13 +56,23 @@ double sumarColMajor(int matrix[N][M])
 
 int main() {
     
-    //double tiempoRowMajor = sumarRowMajor(matrix, N, M);
-    double tiempoRowMajor = sumarRowMajor(matrix);
-    printf("Tiempo Row Major: %f\n", tiempoRowMajor);
+    double tiempoRowMajor = 0;
+    for (int t = 0; t<3; t++){
+        double tiempo = sumarRowMajor(matrix);
+        printf("Tiempo Row Major %d: %f\n",t+1 , tiempo);
+        tiempoRowMajor += tiempo;
+    }
+    tiempoRowMajor = tiempoRowMajor/3;
+    printf("Promedio de tiempos RowMajor: %f\n", tiempoRowMajor);
 
-    //double tiempoColMajor = sumarColMajor(matrix, N, M);
-    double tiempoColMajor = sumarColMajor(matrix);
-    printf("Tiempo Col Major: %f\n", tiempoColMajor);
+    double tiempoColMajor = 0;
+    for (int t = 0; t<3; t++){
+        double tiempo = sumarColMajor(matrix);
+        printf("Tiempo Col Major %d: %f\n",t+1 , tiempo);
+        tiempoColMajor += tiempo;
+    }
+    tiempoColMajor = tiempoColMajor/3;
+    printf("Promedio de tiempos ColMajor: %f\n", tiempoColMajor);
 
     return 0;
     

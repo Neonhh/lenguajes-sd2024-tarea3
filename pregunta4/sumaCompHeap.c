@@ -89,12 +89,23 @@ int main(int argc, char *argv[]) {
         }
     }
     
-    double tiempoRowMajor = sumarRowMajor(matrix, N, M);
-    printf("Tiempo Row Major: %f\n", tiempoRowMajor);
+    double tiempoRowMajor = 0;
+    for (int t = 0; t<3; t++){
+        double tiempo = sumarRowMajor(matrix, N, M);
+        printf("Tiempo Row Major %d: %f\n",t+1 , tiempo);
+        tiempoRowMajor += tiempo;
+    }
+    tiempoRowMajor = tiempoRowMajor/3;
+    printf("Promedio de tiempos RowMajor: %f\n", tiempoRowMajor);
 
-    double tiempoColMajor = sumarColMajor(matrix, N, M);
-    printf("Tiempo Col Major: %f\n", tiempoColMajor);
-
+    double tiempoColMajor = 0;
+    for (int t = 0; t<3; t++){
+        double tiempo = sumarColMajor(matrix, N, M);
+        printf("Tiempo Col Major %d: %f\n",t+1 , tiempo);
+        tiempoColMajor += tiempo;
+    }
+    tiempoColMajor = tiempoColMajor/3;
+    printf("Promedio de tiempos ColMajor: %f\n", tiempoColMajor);
     // Escribir el resultado en un archivo
     FILE *f = fopen("resultados.txt", "a");
     if (f == NULL)

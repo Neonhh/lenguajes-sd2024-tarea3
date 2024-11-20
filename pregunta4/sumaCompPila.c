@@ -52,7 +52,7 @@ double sumarColMajor(int matrix[N][M], int N, int M)
 }
 
 int main() {
-    int N, M;
+    int N, M;  //El maximo tamaño valido es de 1000x100
     printf("Ingresa el numero de filas (N): ");
     scanf("%d", &N);
     printf("Ingresa el numero de columnas (M): ");
@@ -60,14 +60,23 @@ int main() {
 
     int matrix[N][M]; 
     
-    //double tiempoRowMajor = sumarRowMajor(matrix, N, M);
-    double tiempoRowMajor = sumarRowMajor(matrix, N, M);
-    printf("Tiempo Row Major: %f\n", tiempoRowMajor);
+    double tiempoRowMajor = 0;
+    for (int t = 0; t<3; t++){
+        double tiempo = sumarRowMajor(matrix, N, M);
+        printf("Tiempo Row Major %d: %f\n",t+1 , tiempo);
+        tiempoRowMajor += tiempo;
+    }
+    tiempoRowMajor = tiempoRowMajor/3;
+    printf("Promedio de tiempos RowMajor: %f\n", tiempoRowMajor);
 
-    //double tiempoColMajor = sumarColMajor(matrix, N, M);
-    double tiempoColMajor = sumarColMajor(matrix, N, M);
-    printf("Tiempo Col Major: %f\n", tiempoColMajor);
-
+    double tiempoColMajor = 0;
+    for (int t = 0; t<3; t++){
+        double tiempo = sumarColMajor(matrix, N, M);
+        printf("Tiempo Col Major %d: %f\n",t+1 , tiempo);
+        tiempoColMajor += tiempo;
+    }
+    tiempoColMajor = tiempoColMajor/3;
+    printf("Promedio de tiempos ColMajor: %f\n", tiempoColMajor);
     return 0;
     
 }
