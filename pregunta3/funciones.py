@@ -58,17 +58,21 @@ def describirRegistro(tipo, descripcion):
     bytesUsados = 0
     bytesRecorridos = 0
     for i in range(len(descripcion[1])):
+        
         restoAlineacion = bytesRecorridos % descripcion[2][i]
-        if restoAlineacion == 0:
-            bytesUsados += descripcion[1][i]
-            bytesRecorridos += descripcion[1][i]
-        else:
+            
+        if restoAlineacion != 0:
             bytesRecorridos += descripcion[2][i] - restoAlineacion
         
+        bytesUsados += descripcion[1][i]
+        bytesRecorridos += descripcion[1][i]
+        
+            
+
     print("el registro", tipo, "ocupa", bytesRecorridos, "bytes",
               ", tiene alineacion", alineacionTipo, " y se desperdician", bytesRecorridos - bytesUsados, "bytes.")
         
-    print("\nSi se guardan los registros empaquetados,",
+    print("\nSi se guardan los registros empaquetados,\n",
         "el registro", tipo, "ocupa", bytesUsados , "bytes",
         ", tiene alineacion", alineacionTipo, " y no se desperdician bytes.")
 

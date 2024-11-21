@@ -8,4 +8,4 @@ Esta parte de la tarea se centra en comparar los tiempos de ejecucion de suma de
 
 Esta se hace mediante el script de python, `graficarHeap.py`, que se ejecuta usando `python -u graficarHeap.py`.
 
-No se espera que se ejecute directamente ninguno de los otros archivos. Pero en dado caso, para ejecutar `sumaCompHeap.c` se requieren como argumentos en consola el numero de filas y el numero de columnas. En los otros casos, basta correr el programa sin argumentos, y si se requiere mas informacion esta sera requerida dentro del programa.
+No se espera que se ejecute directamente ninguno de los otros archivos. Pero en dado caso, para ejecutar el archivo resultante de compilar `sumaCompHeap.c` se requieren como argumentos en consola el numero de filas y el numero de columnas. En los otros casos, basta correr el programa sin argumentos, y si se requiere mas informacion esta sera requerida dentro del programa.
