@@ -1,7 +1,7 @@
-from funciones import tipoAtomico, registro, registroVariante, describir
+from funciones import tipoAtomico, registro, describir
 def main():
 
-    print("Bienvenido al programa de manejaDatos.\n"+
+    print("Bienvenido al programa de manejaDatos.\n",
           "Opciones: ATOMICO, STRUCT, UNION, DESCRIBIR, SALIR.\n")
     while True:
         user_input = input("$> ")
@@ -13,13 +13,13 @@ def main():
             if opciones[0].upper() == "ATOMICO":
                 tipoAtomico(opciones[1], opciones[2], opciones[3])
             elif opciones[0].upper() == "STRUCT":
-                registro(opciones[1],opciones[2:])
+                registro(opciones[1],opciones[2:], False)
             elif opciones[0].upper() == "UNION":
-                registroVariante(opciones[1],opciones[2:])
+                registro(opciones[1],opciones[2:], True)
             elif opciones[0].upper() == "DESCRIBIR":
                 describir(opciones[1])
             else:
-                print("OPCION NO VALIDA"+
+                print("OPCION NO VALIDA\n",
                 "Opciones: ATOMICO, STRUCT, UNION, DEFINIR, SALIR.\n")
    
 
